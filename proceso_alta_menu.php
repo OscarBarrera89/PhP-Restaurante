@@ -1,18 +1,18 @@
 <?php
-require_once("funcionesBD.php");
+require_once("config.php");
 $conexion = obtenerConexion();
 
 // Recuperar parámetros
-$idcomponente = $_POST['idcomponente'];
-$nombre = $_POST['txtNombre'];
+$nombre = $_POST['txtNombrePlato'];
 $descripcion = $_POST['txtDescripcion'];
-$precio = $_POST['txtPrecio'];
-$idtipo = $_POST['lstTipo'];
+$precio = (float) $_POST['txtPrecio'];
+$alergenos = $_POST['selectAlergenos'];
 
 // No validamos, suponemos que la entrada de datos es correcta
 
-// Definir update
-$sql = "UPDATE componente SET nombre = '" . $nombre . "' , descripcion = '" . $descripcion . "' , precio = $precio , idtipo = $idtipo WHERE idcomponente = $idcomponente ;";
+// Definir insert
+$sql = "INSERT INTO menu(`idplato`, `nombre`, `descripcion`, `precio`, `alergenos`) 
+                VALUES (null,'" . $nombre . "', '" . $descripcion . "', $precio," . "'$alergenos');";
 
 // Ejecutar consulta
 $resultado = mysqli_query($conexion, $sql);
@@ -23,8 +23,11 @@ if (mysqli_errno($conexion) != 0) {
     $descrerror = mysqli_error($conexion);
     $mensaje =  "<h2 class='text-center mt-5'>Se ha producido un error numero $numerror que corresponde a: $descrerror </h2>";
 } else {
-    $mensaje =  "<h2 class='text-center mt-5'>Componente actualizado</h2>"; 
+    $mensaje =  "<h2 class='text-center mt-5'>Menu insertado</h2>"; 
 }
+// Redireccionar tras 5 segundos al index.
+// Siempre debe ir antes de DOCTYPE
+header( "refresh:5;url=index.php" );
 
 // Aquí empieza la página
 include_once("cabecera.html");
