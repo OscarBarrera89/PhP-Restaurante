@@ -12,7 +12,7 @@ include_once("cabecera.html");
 
 <div class="container" id="formularios">
     <div class="row">
-        <form class="form-horizontal" name="frmParametrizadoPedido" id="frmParametrizadoPedido" action="get_pedido.php" method="get">
+        <form class="form-horizontal" name="frmParametrizadoPedido" id="frmParametrizadoPedido" action="get_pedidos.php" method="get">
             <fieldset>
                 <!-- Form Name -->
                 <legend>Listado de pedidos parametrizados</legend>
