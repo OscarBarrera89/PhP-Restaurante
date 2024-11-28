@@ -4,7 +4,7 @@ include_once("cabecera.html");
 
 <div class="container" id="formularios">
     <div class="row">
-        <form class="form-horizontal" action="proceso_buscar_pedido_camarero.php" name="frmBuscarPedido" id="frmBuscarPedido" method="get">
+        <form class="form-horizontal" action="proceso_buscar_pedido.php" name="frmBuscarPedido" id="frmBuscarPedido" method="get">
             <fieldset>
                 <!-- Form Name -->
                 <legend>Buscar Pedido por Camarero</legend>
