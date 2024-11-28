@@ -2,17 +2,7 @@
 require_once("config.php");
 $conexion = obtenerConexion();
 
-if (isset($_GET['lstCliente']) || isset($_GET['txtFecha']) || isset($_GET['txtCamarero'])) {
-    // Recuperar parámetros
-    $idcliente = $_GET['lstCliente'];
-    $fecha = $_GET['txtFecha'];
-    $camarero = $_GET['txtCamarero'];
-
-    // Construir consulta con filtros
-    $sql = "SELECT * FROM pedido WHERE idcliente = '$idcliente' OR fecha = '$fecha' OR camarero = '$camarero' ORDER BY idpedido ASC;";
-} else {
-    $sql = "SELECT * FROM pedido ORDER BY idpedido ASC;";
-}
+$filtros = []; if (!empty($_GET['lstCliente'])) { $idcliente = $_GET['lstCliente']; $filtros[] = "idcliente = '$idcliente'"; } if (!empty($_GET['txtFecha'])) { $fecha = $_GET['txtFecha']; $filtros[] = "fecha = '$fecha'"; } if (!empty($_GET['txtCamarero'])) { $camarero = $_GET['txtCamarero']; $filtros[] = "camarero = '$camarero'"; } if (!empty($filtros)) { $sql = "SELECT * FROM pedido WHERE " . implode(' OR ', $filtros) . " ORDER BY idpedido ASC;"; } else { $sql = "SELECT * FROM pedido ORDER BY idpedido ASC;"; }
 
 // Ejecutar consulta
 $resultado = mysqli_query($conexion, $sql);
