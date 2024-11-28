@@ -19,9 +19,9 @@ include_once("cabecera.html");
                 <h5>Rellene uno de los tres apartados para obtener datos</h5>
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-xs-4 control-label" for="txtIdCliente">ID Cliente</label>
+                    <label class="col-xs-4 control-label" for="lstCliente">ID Cliente</label>
                     <div class="col-xs-4">
-                        <input id="txtIdCliente" name="txtIdCliente" placeholder="ID del cliente"
+                        <input id="lstCliente" name="lstCliente" placeholder="ID del cliente"
                                class="form-control input-md" type="number">
                     </div>
                 </div>
