@@ -62,7 +62,7 @@ include_once("cabecera.html");
 					<div class="form-group">
 						<label class="col-xs-4 control-label" for="btnAceptarAltaPedido"></label>
 						<div class="col-xs-4">
-							<input type="button" id="btnAceptarAltaPedido" name="btnAceptarAltaPedido"
+							<input type="submit" id="btnAceptarAltaPedido" name="btnAceptarAltaPedido"
 								class="btn btn-primary" value="Aceptar" />
 						</div>
 					</div>
