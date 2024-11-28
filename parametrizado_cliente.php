@@ -1,47 +1,59 @@
 <?php
-require_once('config.php');
+require_once("config.php");
+
 $conexion = obtenerConexion();
 
-    $nombre = $_POST["nombre"] ?? null;
-    $email = $_POST["email"] ?? null;
-    $telefono = $_POST["telefono"] ?? null;
+$sql = "SELECT * FROM cliente ORDER BY idcliente ASC;";
 
-    // Validar que los datos no estén vacíos
-    if (!$nombre && !$email && !$telefono) {
-        echo json_encode(value: ["ok" => false, "mensaje" => "No se enviaron criterios para buscar."]);
-        exit;
-    }
+$resultado = mysqli_query($conexion, $sql);
 
-    try {
-        // Construir la consulta dinámica
-        $sql = "SELECT * FROM cliente WHERE 1=1";
-        $params = [];
+include_once("cabecera.html");
+?>
 
-        if ($nombre) {
-            $sql .= " AND nombre LIKE :nombre";
-            $params[":nombre"] = "%" . $nombre . "%";
-        }
-        if ($email) {
-            $sql .= " AND email LIKE :email";
-            $params[":email"] = "%" . $email . "%";
-        }
-        if ($telefono) {
-            $sql .= " AND telefono = :telefono";
-            $params[":telefono"] = $telefono;
-        }
+<div class="container" id="formularios">
+    <div class="row">
+    <form class="form-horizontal" name="frmParametrizadoCliente" id="frmParametrizadoCliente" action="get_cliente.php" method="get">
+				<fieldset>
+					<!-- Form Name -->
+					<legend>Listado de los clientes parametrizados por este formulario</legend>
+					<h5>Rellene uno de los tres apartados para obtener datos</h5>
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtNombreCliente">Nombre del cliente</label>
+						<div class="col-xs-4">
+							<input id="txtNombreCliente" name="txtNombreCliente" placeholder="Nombre del cliente"
+								class="form-control input-md" type="text">
+						</div>
+					</div>
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtEmailCliente">Email del cliente</label>
+						<div class="col-xs-4">
+							<input id="txtEmailCliente" name="txtEmailCliente" placeholder="Email del cliente" class="form-control input-md"
+								type="text">
+						</div>
+					</div>
+                    <!-- Text input-->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="txtTelefonoCliente">Telefono del cliente</label>
+						<div class="col-xs-4">
+							<input id="txtTelefonoCliente" name="txtTelefonoCliente" placeholder="Telefono del cliente" class="form-control input-md"
+								type="text">
+						</div>
+					</div>
+					
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="btnBuscarParametrizadoCliente"></label>
+						<div class="col-xs-4">
+							<input type="submit" id="btnBuscarParametrizadoCliente" name="btnBuscarParametrizadoCliente"
+								class="btn btn-primary" value="Buscar" />
+						</div>
+                    </div>
+                </fieldset>
+        </form>
+    </div>
+</div>
+</body>
 
-        // Preparar y ejecutar la consulta
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute($params);
-
-        // Obtener los resultados
-        $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if (count($resultados) > 0) {
-            echo json_encode(["ok" => true, "datos" => $resultados]);
-        } else {
-            echo json_encode(["ok" => false, "mensaje" => "No se encontraron resultados."]);
-        }
-    } catch (PDOException $e) {
-        echo json_encode(["ok" => false, "mensaje" => "Error al ejecutar la consulta: " . $e->getMessage()]);
-    }
+</html>
