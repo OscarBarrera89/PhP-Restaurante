@@ -8,7 +8,7 @@ $resultado = mysqli_query($conexion, $sql);
 
 $sql2 = "SELECT idcliente, nombre, email, telefono FROM cliente;";
 
-$resultado2 = mysqli_query($conexion2, $sql2);
+$resultado2 = mysqli_query($conexion, $sql2);
 
 $options = "";
 while ($fila = mysqli_fetch_assoc($resultado2)) {
