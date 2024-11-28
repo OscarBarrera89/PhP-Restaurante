@@ -17,6 +17,11 @@ if (isset($_GET['lstCliente']) || isset($_GET['txtFecha']) || isset($_GET['txtCa
 // Ejecutar consulta
 $resultado = mysqli_query($conexion, $sql);
 
+// Verificar si la consulta se ejecutó correctamente 
+if (!$resultado) { 
+    die("Error en la consulta SQL: " . mysqli_error($conexion)); 
+}
+
 // Generar tabla
 $mensaje = "<h2 class='text-center'>Listado de pedidos</h2>";
 $mensaje .= "<table class='table table-striped'>";
