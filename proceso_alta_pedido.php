@@ -11,8 +11,8 @@ $total = (float)$_POST['txtTotal'];
 // No validamos, suponemos que la entrada de datos es correcta
 
 // Definir insert
-$sql = "INSERT INTO pedido(`idpedido`, `idcliente`, `fecha`, `camarero`, `total`) 
-                VALUES (null,'" . $idcliente . "', '" . $fecha . "', $camarero," . "'$total');";
+$sql = "INSERT INTO pedido (`idpedido`, `idcliente`, `fecha`, `camarero`, `total`) 
+        VALUES (null, '$idcliente', '$fecha', '$camarero', $total);";
 
 // Ejecutar consulta
 $resultado = mysqli_query($conexion, $sql);
