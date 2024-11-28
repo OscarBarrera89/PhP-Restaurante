@@ -22,11 +22,11 @@ include_once("cabecera.html");
             <fieldset>
                 <!-- Form Name -->
                 <legend>Modificación de Pedido</legend>
-                <!-- Cliente input -->
+                <!-- Cliente input (solo lectura) -->
                 <div class="form-group">
                     <label class="col-xs-4 control-label" for="txtCliente">ID Cliente</label>
                     <div class="col-xs-4">
-                        <input value="<?php echo $pedido['idcliente']; ?>" id="txtCliente" name="txtCliente" placeholder="ID del cliente" class="form-control input-md" type="number" required>
+                        <input value="<?php echo $pedido['idcliente']; ?>" id="txtCliente" name="txtCliente" placeholder="ID del cliente" class="form-control input-md" type="number" readonly>
                     </div>
                 </div>
                 <!-- Fecha input -->
