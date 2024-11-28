@@ -20,7 +20,7 @@ include_once("cabecera.html");
 ?>
     <div class="container" id="formularios">
         <div class="row">
-		<form class="form-horizontal" name="frmAltaPedido" id="frmAltaPedido">
+		<form class="form-horizontal" name="frmAltaPedido" id="frmAltaPedido"  action="proceso_alta_pedido.php" method="post">
 				<fieldset>
 					<!-- Form Name -->
 					<legend>Alta de Pedido</legend>
