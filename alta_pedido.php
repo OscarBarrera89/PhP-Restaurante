@@ -29,8 +29,7 @@ include_once("cabecera.html");
                         <label class="col-2 control-label" for="lstCliente">Cliente</label>
                         <div class="col-3">
                             <select class="form-select" name="lstCliente" id="lstCliente">
-                                <option value="">Seleccione un cliente</option>
-								<?php echo $options; ?>
+                                <option value=""><?php echo $options; ?></option>
                             </select>
                         </div>
                     </div>
