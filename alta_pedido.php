@@ -6,6 +6,16 @@ $sql = "SELECT idpedido, idcliente, fecha, camarero, total FROM pedido;";
 
 $resultado = mysqli_query($conexion, $sql);
 
+$sql2 = "SELECT idcliente, nombre, email, telefono FROM cliente;";
+
+$resultado2 = mysqli_query($conexion2, $sql2);
+
+$options = "";
+while ($fila = mysqli_fetch_assoc($resultado2)) {
+    // $tipos[] = $fila; // Insertar una fila al final
+    $options .= " <option value='" . $fila["idcliente"] . "'>" . $fila["nombre"] . "</option>";
+}
+
 include_once("cabecera.html");
 ?>
     <div class="container" id="formularios">
@@ -20,7 +30,7 @@ include_once("cabecera.html");
                         <div class="col-3">
                             <select class="form-select" name="lstCliente" id="lstCliente">
                                 <option value="">Seleccione un cliente</option>
-                              
+								<?php echo $options; ?>
                             </select>
                         </div>
                     </div>
